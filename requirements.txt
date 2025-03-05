@@ -1,0 +1,6 @@
+python-nmap
+motor
+cryptography
+scapy
+requests
+aiofiles
