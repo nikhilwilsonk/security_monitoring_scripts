@@ -1,13 +1,13 @@
 import json
-from sqlite3 import connect, Connection, Cursor
-from typing import List, Dict, Any
+from sqlite3 import connect
+from typing import Dict, Any
 
 class SecurityDatabase:
     def __init__(self, db_path='security_monitor.db'):
         self.db_path = db_path
-        self._create_tables()
+        self.create_tables()
     
-    def _create_tables(self):
+    def create_tables(self):
         with connect(self.db_path) as conn:
             cursor = conn.cursor()
             
@@ -23,12 +23,6 @@ class SecurityDatabase:
             conn.commit()
     
     def log_network_scan(self, scan_result: Dict[str, Any]):
-        """
-        Log network scan results to database
-        
-        Args:
-            scan_result (Dict): Scan result details
-        """
         with connect(self.db_path) as conn:
             cursor = conn.cursor()
             cursor.execute(
