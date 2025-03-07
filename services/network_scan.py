@@ -9,9 +9,7 @@ class NetworkScanner:
         self.nm = nmap.PortScanner()
     
     def scan_network(self) -> List[Dict[str, Any]]:
-
         logger.info(f"Starting network scan for {self.target_network}")
-        
         scan_results = []
         try:
             self.nm.scan(hosts=self.target_network, arguments='-sn -sV')
